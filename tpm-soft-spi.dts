@@ -1,0 +1,66 @@
+/*
+ * Device Tree overlay for the Infineon SLB9670 Trusted Platform Module add-on
+ * boards, which can be used as a secure key storage and hwrng.
+ * available as "Iridium SLB9670" by Infineon and "LetsTrust TPM" by pi3g.
+ */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
+
+	fragment@0 {
+		target = <&spi0>;
+		__overlay__ {
+			compatible = "spi-gpio";
+			pinctrl-names = "default";
+			pinctrl-0 = <&spi0_gpio7>;
+			gpio-sck = <&gpio 11 0>;
+			gpio-mosi = <&gpio 10 0>;
+			gpio-miso = <&gpio 9 0>;
+			/* cs-gpios = <&gpio 7 0>, <&gpio 8 0>; */
+			cs-gpios = <&gpio 7 0>;
+			spi-delay-us = <0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			/* for kernel driver */
+			sck-gpios = <&gpio 11 0>;
+			mosi-gpios = <&gpio 10 0>;
+			miso-gpios = <&gpio 9 0>;
+			/* num-chipselects = <2>; */
+			num-chipselects = <1>;
+
+			slb9670: slb9670@0 {
+				compatible = "infineon,slb9670", "tis,tpm2-spi";
+				/* compatible = "tis,tpm2-spi", "infineon,slb9670"; */ /* tcg,tpm_tis-spi */
+				/* reg = <1>; */
+				reg = <0>;
+				gpio-reset = <&gpio 24 1>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				status = "okay";
+
+				/* for kernel driver */
+				spi-max-frequency = <1000000>;
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <&spi0_gpio7>;
+		__overlay__ {
+			brcm,pins = <7 8 9 10 11 24>;
+			brcm,function = <0>;
+		};
+	};
+
+	fragment@2 {
+		target = <&spidev1>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+};
