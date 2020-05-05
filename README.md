@@ -197,7 +197,7 @@ Remember how I said that we need to work around the problem of our SPI driver
 not being able to operate at SPI mode 0? Now is the time.
 
 Secondly, there is a compile-time bug. Just apply these two patches. (If the
-patches do not compile, call `git checkout 7dbafe06` first.)
+patches do not apply, call `git checkout 7dbafe06` first.)
 
 ```bash
 git apply /path/to/dm-spi-fix-CPHA-and-implement-CPOL-for-soft-spi.diff
