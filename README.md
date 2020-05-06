@@ -242,6 +242,11 @@ make changes to the device tree, we create a **device tree overlay**.
 
 Create a file named `tpm-soft-spi.dts` and copy the following into it.
 
+NOTE: somewhere between commits `7dbafe06` and `1259567a`, the chip select
+polarity changed in the U-Boot driver. This is the reason for the `1` in
+`cs-gpios = <&gpio 7 1>;`. If you use an older U-Boot version, you might want to
+put a `0`, there.
+
 ```dts
 /*
  * Device Tree overlay for the Infineon SLB9670 Trusted Platform Module add-on
@@ -264,7 +269,7 @@ Create a file named `tpm-soft-spi.dts` and copy the following into it.
 			gpio-sck = <&gpio 11 0>;
 			gpio-mosi = <&gpio 10 0>;
 			gpio-miso = <&gpio 9 0>;
-			cs-gpios = <&gpio 7 0>;
+			cs-gpios = <&gpio 7 1>;
 			spi-delay-us = <0>;
 			#address-cells = <1>;
 			#size-cells = <0>;

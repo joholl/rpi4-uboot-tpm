@@ -19,7 +19,7 @@
 			gpio-sck = <&gpio 11 0>;
 			gpio-mosi = <&gpio 10 0>;
 			gpio-miso = <&gpio 9 0>;
-			cs-gpios = <&gpio 7 0>;
+			cs-gpios = <&gpio 7 1>;
 			spi-delay-us = <0>;
 			#address-cells = <1>;
 			#size-cells = <0>;
