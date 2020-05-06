@@ -4,7 +4,7 @@ This guide shows how to use the TPM 2.0 in the `U-Boot` bootloader prior to load
 the Linux kernel on Raspberry Pi 4. In our case, we want U-Boot and the Linux
 Kernel to be 64 bit because why not. :)
 
-DISCLAIMER: since U-Boot does not ship a harware SPI driver for Raspberry, both
+DISCLAIMER: since U-Boot does not ship a hardware SPI driver for Raspberry, both
 U-Boot and Linux use their built-in soft-spi driver to communicate to the TPM.
 
 ## No Secure Boot on Raspberry Pi
@@ -130,7 +130,7 @@ Since we still need to add U-Boot, don't unplug your card, yet.
 
 ### Option B) Updating your 32 Bit Kernel to 64 Bit
 
-Now instruct your Raspberry to perform a kernel update and reboot.
+Alternatively, you can instruct your Raspberry to perform a kernel update and reboot.
 
 ```
 sudo rpi-update
@@ -144,7 +144,7 @@ After the reboot, shut your Raspbian off and plug in the SD card to your PC.
 The Raspberry Pi talks to the TPM via SPI. Now here's the catch:
 
 U-Boot does not ship an SPI driver for our Raspberry's Chip. This means we
-cannot use the SPI hareware controller with U-Boot. However, we can use a
+cannot use the SPI hardware controller with U-Boot. However, we can use a
 software SPI driver which uses GPIO to *bit bang* the data to the TPM. Luckily
 for us, U-Boot provides a ready-to-use driver exactly for that.
 
