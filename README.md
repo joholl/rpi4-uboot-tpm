@@ -176,6 +176,7 @@ order:
 * Device Drivers
   * (y) SPI Support
     * (y) Enable Driver Model for SPI drivers     (`DM_SPI`)
+    * (y) Soft SPI driver                         (`SPI_SOFT`)
 * Library routines
   * Security Support
     * (y) Trusted Platform Module (TPM) support   (`TPM`)
