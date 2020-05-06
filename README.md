@@ -298,6 +298,13 @@ Create a file named `tpm-soft-spi.dts` and copy the following into it.
 	};
 
 	fragment@2 {
+		target = <&spidev0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@3 {
 		target = <&spidev1>;
 		__overlay__ {
 			status = "disabled";

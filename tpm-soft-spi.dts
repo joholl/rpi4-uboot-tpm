@@ -19,7 +19,6 @@
 			gpio-sck = <&gpio 11 0>;
 			gpio-mosi = <&gpio 10 0>;
 			gpio-miso = <&gpio 9 0>;
-			/* cs-gpios = <&gpio 7 0>, <&gpio 8 0>; */
 			cs-gpios = <&gpio 7 0>;
 			spi-delay-us = <0>;
 			#address-cells = <1>;
@@ -30,13 +29,10 @@
 			sck-gpios = <&gpio 11 0>;
 			mosi-gpios = <&gpio 10 0>;
 			miso-gpios = <&gpio 9 0>;
-			/* num-chipselects = <2>; */
 			num-chipselects = <1>;
 
 			slb9670: slb9670@0 {
 				compatible = "infineon,slb9670", "tis,tpm2-spi";
-				/* compatible = "tis,tpm2-spi", "infineon,slb9670"; */ /* tcg,tpm_tis-spi */
-				/* reg = <1>; */
 				reg = <0>;
 				gpio-reset = <&gpio 24 1>;
 				#address-cells = <1>;
@@ -58,6 +54,13 @@
 	};
 
 	fragment@2 {
+		target = <&spidev0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@3 {
 		target = <&spidev1>;
 		__overlay__ {
 			status = "disabled";
