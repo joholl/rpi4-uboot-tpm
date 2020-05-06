@@ -282,7 +282,7 @@ put a `0`, there.
 			num-chipselects = <1>;
 
 			slb9670: slb9670@0 {
-				compatible = "tis,tpm2-spi", "infineon,slb9670";
+				compatible = "infineon,slb9670", "tis,tpm2-spi";
 				reg = <0>;
 				gpio-reset = <&gpio 24 1>;
 				#address-cells = <1>;
