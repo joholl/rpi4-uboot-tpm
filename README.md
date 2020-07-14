@@ -148,9 +148,9 @@ cannot use the SPI hardware controller with U-Boot. However, we can use a
 software SPI driver which uses GPIO to *bit bang* the data to the TPM. Luckily
 for us, U-Boot provides a ready-to-use driver exactly for that.
 
-Yes, there is a second catch: this driver does not support the SPI mode 0
+~~Yes, there is a second catch: this driver does not support the SPI mode 0
 (CPOL=0/CPHA=0) which we need. We can work around this, but I'll come to that
-later
+later~~
 
 ### Setting up and Configuring
 
@@ -194,16 +194,21 @@ Note: in this menu, you can also enable logging for troubleshooting.
 
 ### Patching and Building
 
-Remember how I said that we need to work around the problem of our SPI driver
-not being able to operate at SPI mode 0? Now is the time.
+**Update**: the patches
+[[1]](https://gitlab.denx.de/u-boot/u-boot/-/commit/0e146993bb3da59d2c52515048405444f35f00ec),[[2]](https://gitlab.denx.de/u-boot/u-boot/-/commit/bedbb383e1bf5777386c885950f7fb0a21b0daa2)
+were upstreamed and are part of mainline as of 2020/07/09. Thus, patching is not
+necessary anymore.
 
-Secondly, there is a compile-time bug. Just apply these two patches. (If the
-patches do not apply, call `git checkout 7dbafe06` first.)
+~~Remember how I said that we need to work around the problem of our SPI driver
+not being able to operate at SPI mode 0? Now is the time.~~
 
-```bash
-git apply /path/to/dm-spi-fix-CPHA-and-implement-CPOL-for-soft-spi.diff
-git apply /path/to/fix_compile_time_bug.diff
-```
+~~Secondly, there is a compile-time bug. Just apply these two patches. (If the
+patches do not apply, call `git checkout 7dbafe06` first.)~~
+
+
+~~`git apply /path/to/dm-spi-fix-CPHA-and-implement-CPOL-for-soft-spi.diff`~~
+
+~~`git apply /path/to/fix_compile_time_bug.diff`~~
 
 Now you can build U-Boot.
 
