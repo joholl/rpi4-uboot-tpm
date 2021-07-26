@@ -36,7 +36,7 @@ The boot chain on the Raspberry Pi:
 +-----------------+                                           +------------------------+
 ```
 
-What we want to archive
+What we want to achieve
 
 ```
 +-----------------+        +-------------------------+        +------------------------+
