@@ -29,8 +29,8 @@ The boot chain on the Raspberry Pi:
 
 ```
 +-----------------+                                           +------------------------+
-|    first-stage  |                                           |        Raspbian        |
-|    bootloader   |------------------------------------------\|      Linux Kernel      |
+|   first-stage   |                                           |        Raspbian        |
+|   bootloader    |------------------------------------------\|      Linux Kernel      |
 |                 |------------------------------------------/|                        |
 | (closed-source) |                                           | (built-in TPM support) |
 +-----------------+                                           +------------------------+
@@ -40,8 +40,8 @@ What we want to achieve
 
 ```
 +-----------------+        +-------------------------+        +------------------------+
-|    first-stage  |        | second-stage bootloader |        |        Raspbian        |
-|    bootloader   |-------\|          U-Boot         |-------\|      Linux Kernel      |
+|   first-stage   |        | second-stage bootloader |        |        Raspbian        |
+|   bootloader    |-------\|          U-Boot         |-------\|      Linux Kernel      |
 |                 |-------/|                         |-------/|                        |
 | (closed-source) |        | (built-in TPM support)  |        | (built-in TPM support) |
 +-----------------+        +-------------------------+        +------------------------+
