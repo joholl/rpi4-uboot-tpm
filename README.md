@@ -66,7 +66,7 @@ your SD card in, unmount its partition if necessary and flash the Raspberry Pi O
 image onto the card:
 
 ```bash
-tar xf raspios_latest.img.xz
+unxz -T 0 raspios_latest.img.xz
 sudo dd if=raspios_latest.img of=/dev/mmcblk0 bs=4M status=progress conv=fsync
 ```
 
